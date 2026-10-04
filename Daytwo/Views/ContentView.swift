@@ -45,7 +45,16 @@ struct ContentView: View {
         }
         .appMinFrame()
         .task {
+            // 先吸收日记文件夹中外部编辑器做的修改，再做其它初始化
+            VaultService.shared.syncFromFolder(context: modelContext)
             SampleData.seedIfNeeded(context: modelContext)
+            if SampleData.isEnabled, VaultService.shared.isVaultActive {
+                // 演示数据中还没有落盘的日记补写文件
+                let unwritten = (try? modelContext.fetch(FetchDescriptor<JournalEntry>()))?
+                    .filter { $0.vaultFilename?.isEmpty != false } ?? []
+                VaultService.shared.writeAll(unwritten)
+                try? modelContext.save()
+            }
         }
     }
 

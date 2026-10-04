@@ -8,7 +8,8 @@ struct TimelineView: View {
     private var entries: [JournalEntry]
 
     @State private var searchText = ""
-    @State private var showComposer = false
+    @State private var newEntry: JournalEntry?
+    @State private var showEditor = false
 
     private var filtered: [JournalEntry] {
         let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -54,7 +55,7 @@ struct TimelineView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
-                        showComposer = true
+                        createNewEntry()
                     } label: {
                         Image(systemName: "square.and.pencil")
                     }
@@ -62,8 +63,12 @@ struct TimelineView: View {
                     .help("写新日记")
                 }
             }
-            .sheet(isPresented: $showComposer) {
-                ComposerView()
+            .navigationDestination(isPresented: $showEditor) {
+                if let newEntry {
+                    EntryEditorView(entry: newEntry, autoCaptureLocation: true)
+                } else {
+                    Text("正在创建…")
+                }
             }
         }
     }
@@ -82,6 +87,7 @@ struct TimelineView: View {
                             Button {
                                 entry.favorite.toggle()
                                 try? modelContext.save()
+                                VaultService.shared.writeEntry(entry)
                             } label: {
                                 Label(
                                     entry.favorite ? "取消收藏" : "收藏",
@@ -90,8 +96,7 @@ struct TimelineView: View {
                             }
                             Divider()
                             Button(role: .destructive) {
-                                modelContext.delete(entry)
-                                try? modelContext.save()
+                                deleteEntry(entry)
                             } label: {
                                 Label("删除", systemImage: "trash")
                             }
@@ -105,6 +110,25 @@ struct TimelineView: View {
             }
         }
         .listStyle(.plain)
+    }
+
+    // MARK: - 动作
+
+    /// Day One 式创建：条目在点击瞬间即创建（保留真实创建时间），
+    /// 定位在后台预热，编辑器立即打开，输入自动保存。
+    private func createNewEntry() {
+        let entry = JournalEntry()
+        modelContext.insert(entry)
+        try? modelContext.save()
+        LocationService.shared.capture()
+        newEntry = entry
+        showEditor = true
+    }
+
+    private func deleteEntry(_ entry: JournalEntry) {
+        VaultService.shared.deleteEntry(entry)
+        modelContext.delete(entry)
+        try? modelContext.save()
     }
 }
 

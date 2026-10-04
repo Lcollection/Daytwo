@@ -87,6 +87,7 @@ struct EntryListView: View {
                             Button {
                                 entry.favorite.toggle()
                                 try? modelContext.save()
+                                VaultService.shared.writeEntry(entry)
                             } label: {
                                 Label(
                                     entry.favorite ? "取消收藏" : "收藏",
@@ -95,6 +96,7 @@ struct EntryListView: View {
                             }
                             Divider()
                             Button(role: .destructive) {
+                                VaultService.shared.deleteEntry(entry)
                                 modelContext.delete(entry)
                                 try? modelContext.save()
                             } label: {

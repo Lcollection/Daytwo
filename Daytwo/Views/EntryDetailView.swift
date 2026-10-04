@@ -9,10 +9,20 @@ struct EntryDetailView: View {
 
     let entry: JournalEntry
 
-    @State private var showEdit = false
+    @State private var showEditor = false
     @State private var confirmDelete = false
 
     var body: some View {
+        Group {
+            if entry.isDeleted {
+                ContentUnavailableView("日记已删除", systemImage: "trash")
+            } else {
+                detail
+            }
+        }
+    }
+
+    private var detail: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
                 Text(entry.createdAt, formatter: DateFormatters.full)
@@ -44,20 +54,21 @@ struct EntryDetailView: View {
             ToolbarItem(placement: .primaryAction) {
                 Menu {
                     Button {
-                        showEdit = true
+                        showEditor = true
                     } label: {
                         Label("编辑", systemImage: "square.and.pencil")
                     }
                     Button {
                         entry.favorite.toggle()
                         try? modelContext.save()
+                        VaultService.shared.writeEntry(entry)
                     } label: {
                         Label(
                             entry.favorite ? "取消收藏" : "收藏",
                             systemImage: entry.favorite ? "star.slash" : "star"
                         )
                     }
-                    ShareLink(item: entry.exportMarkdown()) {
+                    ShareLink(item: entry.vaultMarkdown()) {
                         Label("分享 Markdown", systemImage: "square.and.arrow.up")
                     }
                     Divider()
@@ -71,8 +82,8 @@ struct EntryDetailView: View {
                 }
             }
         }
-        .sheet(isPresented: $showEdit) {
-            ComposerView(entry: entry)
+        .navigationDestination(isPresented: $showEditor) {
+            EntryEditorView(entry: entry)
         }
         .confirmationDialog(
             "确定删除这篇日记吗？此操作不可撤销。",
@@ -80,6 +91,7 @@ struct EntryDetailView: View {
             titleVisibility: .visible
         ) {
             Button("删除", role: .destructive) {
+                VaultService.shared.deleteEntry(entry)
                 modelContext.delete(entry)
                 try? modelContext.save()
                 dismiss()

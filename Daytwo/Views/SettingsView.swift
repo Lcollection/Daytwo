@@ -13,9 +13,12 @@ struct SettingsView: View {
     @State private var showFolderExport = false
     @State private var showJSONExport = false
     @State private var showJSONImport = false
+    @State private var showVaultPicker = false
     @State private var showWipeConfirm = false
     @State private var notice: String?
     @State private var showNotice = false
+
+    private var vault: VaultService { VaultService.shared }
 
     private var versionString: String {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.1.0"
@@ -29,6 +32,7 @@ struct SettingsView: View {
                 VStack(spacing: 24) {
                     header
 
+                    storageSection
                     dataSection
                     dangerSection
                     privacySection
@@ -49,6 +53,10 @@ struct SettingsView: View {
                 isPresented: $showFolderExport,
                 allowedContentTypes: [.folder]
             ) { handleFolderExport($0) }
+            .fileImporter(
+                isPresented: $showVaultPicker,
+                allowedContentTypes: [.folder]
+            ) { handleVaultPick($0) }
             .fileExporter(
                 isPresented: $showJSONExport,
                 document: BackupFile(entries: entries.map(EntryBackup.init)),
@@ -102,6 +110,33 @@ struct SettingsView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.top, 4)
+    }
+
+    /// 存储位置（Obsidian 式日记文件夹）
+    private var storageSection: some View {
+        card("存储") {
+            actionRow(
+                icon: "folder", color: .brown,
+                title: vault.isVaultActive
+                    ? (vault.vaultURL?.lastPathComponent ?? "日记文件夹")
+                    : "选择日记文件夹",
+                subtitle: vault.isVaultActive
+                    ? "日记以 Markdown 文件保存在所选文件夹，可用其他编辑器打开"
+                    : "可选：像 Obsidian 一样把每篇日记保存为普通 Markdown 文件，便于备份与迁移"
+            ) { showVaultPicker = true }
+
+            if vault.isVaultActive {
+                rowDivider
+                actionRow(
+                    icon: "arrow.uturn.backward", color: .gray,
+                    title: "恢复默认存储",
+                    subtitle: "新日记保存在 App 内部数据库；文件夹中的既有文件不受影响"
+                ) {
+                    vault.clearVault()
+                    presentNotice("已恢复默认存储")
+                }
+            }
+        }
     }
 
     /// 数据管理
@@ -274,6 +309,18 @@ struct SettingsView: View {
         .disabled(action == nil)
     }
 
+    // MARK: - 启用日记文件夹
+
+    private func handleVaultPick(_ result: Result<URL, Error>) {
+        guard case .success(let url) = result else { return }
+        do {
+            try VaultService.shared.enableVault(at: url, context: modelContext)
+            presentNotice("日记库已启用：当前 \(entries.count) 篇日记已保存为 Markdown 文件")
+        } catch {
+            presentNotice("启用日记文件夹失败：\(error.localizedDescription)")
+        }
+    }
+
     // MARK: - 导出 Markdown 文件夹
 
     private func handleFolderExport(_ result: Result<URL, Error>) {
@@ -299,7 +346,7 @@ struct SettingsView: View {
                     counter += 1
                 }
                 usedNames.insert(filename)
-                try entry.exportMarkdown().write(
+                try entry.vaultMarkdown().write(
                     to: targetDir.appending(path: filename),
                     atomically: true,
                     encoding: .utf8

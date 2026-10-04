@@ -177,5 +177,12 @@ enum SampleData {
             ))
         }
         try? context.save()
+
+        // 日记文件夹模式下同步写出文件
+        if VaultService.shared.isVaultActive {
+            let all = (try? context.fetch(FetchDescriptor<JournalEntry>())) ?? []
+            VaultService.shared.writeAll(all)
+            try? context.save()
+        }
     }
 }
