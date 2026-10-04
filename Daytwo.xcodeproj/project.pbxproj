@@ -1,0 +1,446 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		07EF14CEC38E7F78BA8E4F22 /* StatsCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422119B8F79D255C2F435D14 /* StatsCalculatorTests.swift */; };
+		08A548167D82B233773644CB /* EntriesMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0324180128667ADB869614 /* EntriesMapView.swift */; };
+		1FA0B6BEE4B9970419D1B26F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C654526B65327F32993A3BFC /* SettingsView.swift */; };
+		314BDD4C928D4510E91C9010 /* MarkdownEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9869CC4846E4C3249243D708 /* MarkdownEditorView.swift */; };
+		39DC486CB70EA52C74B52464 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B6F920A8A466052FC6F802 /* ContentView.swift */; };
+		479CA6F0F309E618CC9CCA44 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8E8B85F8D8A8F8D39D599EEF /* MarkdownUI */; };
+		4C7A1A4639BC8C31201D3BF0 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92370AF92B60E31D4FEB10FD /* DateFormatters.swift */; };
+		541B8D4621D384F4F93E1F0B /* StatsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F448B1FA26055AF130F20 /* StatsCalculator.swift */; };
+		60FFFEB1C70F4D15A3D887F0 /* EntryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510B05A28DB248FB6A46CD6F /* EntryDetailView.swift */; };
+		642340271D1B63D837256B50 /* ComposerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49C4571D65D01A5DFD978F /* ComposerView.swift */; };
+		6455EF7AF00712B648D61B5F /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515C8C105275EEE6C0E3E4E1 /* LocationService.swift */; };
+		67C75BD6AB1237058449721D /* MarkdownFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B8D6E7E146E14AAC5194F3 /* MarkdownFormatterTests.swift */; };
+		751CB0288E0AC8E379AB4ABB /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF89B17161E6B3E539BCC20 /* ViewExtensions.swift */; };
+		884749A41EB5176BB10E740F /* DaytwoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E09FEDAAB5DEAC2F11B572 /* DaytwoApp.swift */; };
+		A0265052ECAB547E201A753A /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8C55CA3C41C06D970B2A4E /* SampleData.swift */; };
+		AFC22760B6D531EBD2D0DF67 /* EntryBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82829E8D5978CE6E0A5340FA /* EntryBackup.swift */; };
+		C65CFC9D2A77A744B2E514C9 /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE4541E0D6BA65E16C2FA77 /* JournalEntry.swift */; };
+		D53135B1A180298E86B74844 /* MarkdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800B1E3AA47F52E56F9EFFC /* MarkdownFormatter.swift */; };
+		E9800BA1CAF617151AC7E5FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A4F91794DB178F53FC31771 /* Assets.xcassets */; };
+		FF9240376C28170A0DE24A9C /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB13B1B4669162F1E918B51 /* TimelineView.swift */; };
+		FF9A57377E0E51D18ABB56DA /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11435BC8973028831BF0858 /* LocationListView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DFA52649E064AA24B8455D87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 40E58CC3BB57CDEE4AC21DAB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADC6947251164BB47F5A04E4;
+			remoteInfo = Daytwo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03BD08B815EF1BEF48896236 /* Daytwo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daytwo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		103F448B1FA26055AF130F20 /* StatsCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCalculator.swift; sourceTree = "<group>"; };
+		3A4F91794DB178F53FC31771 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		422119B8F79D255C2F435D14 /* StatsCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCalculatorTests.swift; sourceTree = "<group>"; };
+		48B6F920A8A466052FC6F802 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4B49C4571D65D01A5DFD978F /* ComposerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposerView.swift; sourceTree = "<group>"; };
+		510B05A28DB248FB6A46CD6F /* EntryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailView.swift; sourceTree = "<group>"; };
+		515C8C105275EEE6C0E3E4E1 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		5AE4541E0D6BA65E16C2FA77 /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
+		6DF89B17161E6B3E539BCC20 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		82829E8D5978CE6E0A5340FA /* EntryBackup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryBackup.swift; sourceTree = "<group>"; };
+		88E09FEDAAB5DEAC2F11B572 /* DaytwoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaytwoApp.swift; sourceTree = "<group>"; };
+		92370AF92B60E31D4FEB10FD /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
+		9869CC4846E4C3249243D708 /* MarkdownEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownEditorView.swift; sourceTree = "<group>"; };
+		AF8C55CA3C41C06D970B2A4E /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		C11435BC8973028831BF0858 /* LocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
+		C654526B65327F32993A3BFC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CB99B6D840E9D6BB4B174598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CCC956B07D2F590905AFFCC1 /* Daytwo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Daytwo.entitlements; sourceTree = "<group>"; };
+		E6B8D6E7E146E14AAC5194F3 /* MarkdownFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownFormatterTests.swift; sourceTree = "<group>"; };
+		E800B1E3AA47F52E56F9EFFC /* MarkdownFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownFormatter.swift; sourceTree = "<group>"; };
+		EBB13B1B4669162F1E918B51 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		F6B00FCCFD7B2B970EE905FF /* DaytwoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaytwoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC0324180128667ADB869614 /* EntriesMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesMapView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		28FCC45A77E60059B96213E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				479CA6F0F309E618CC9CCA44 /* MarkdownUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10B7D0CF501CDA931DC58DCA /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FA0220F08A14BA4B49894FA1 /* DaytwoTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		18F048E556405DF968E865AD = {
+			isa = PBXGroup;
+			children = (
+				67AB670CD21DD10C0A17C74F /* Daytwo */,
+				10B7D0CF501CDA931DC58DCA /* Tests */,
+				ABEEA4A34CB1558CF45F511A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		606B3E2BD5509D2F2B8C4857 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				9869CC4846E4C3249243D708 /* MarkdownEditorView.swift */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
+		67AB670CD21DD10C0A17C74F /* Daytwo */ = {
+			isa = PBXGroup;
+			children = (
+				3A4F91794DB178F53FC31771 /* Assets.xcassets */,
+				CCC956B07D2F590905AFFCC1 /* Daytwo.entitlements */,
+				88E09FEDAAB5DEAC2F11B572 /* DaytwoApp.swift */,
+				CB99B6D840E9D6BB4B174598 /* Info.plist */,
+				88DF9CF17E77DB509912A896 /* Models */,
+				EDC53C8A3EB4F0B8E1D343E8 /* Services */,
+				F8CE7C166C36FDFD4A239F4A /* Utilities */,
+				B1F1607F462E99936C815630 /* Views */,
+			);
+			path = Daytwo;
+			sourceTree = "<group>";
+		};
+		88DF9CF17E77DB509912A896 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				82829E8D5978CE6E0A5340FA /* EntryBackup.swift */,
+				5AE4541E0D6BA65E16C2FA77 /* JournalEntry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ABEEA4A34CB1558CF45F511A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03BD08B815EF1BEF48896236 /* Daytwo.app */,
+				F6B00FCCFD7B2B970EE905FF /* DaytwoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1F1607F462E99936C815630 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4B49C4571D65D01A5DFD978F /* ComposerView.swift */,
+				48B6F920A8A466052FC6F802 /* ContentView.swift */,
+				FC0324180128667ADB869614 /* EntriesMapView.swift */,
+				510B05A28DB248FB6A46CD6F /* EntryDetailView.swift */,
+				C11435BC8973028831BF0858 /* LocationListView.swift */,
+				C654526B65327F32993A3BFC /* SettingsView.swift */,
+				EBB13B1B4669162F1E918B51 /* TimelineView.swift */,
+				606B3E2BD5509D2F2B8C4857 /* Editor */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EDC53C8A3EB4F0B8E1D343E8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				515C8C105275EEE6C0E3E4E1 /* LocationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F8CE7C166C36FDFD4A239F4A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				92370AF92B60E31D4FEB10FD /* DateFormatters.swift */,
+				E800B1E3AA47F52E56F9EFFC /* MarkdownFormatter.swift */,
+				AF8C55CA3C41C06D970B2A4E /* SampleData.swift */,
+				103F448B1FA26055AF130F20 /* StatsCalculator.swift */,
+				6DF89B17161E6B3E539BCC20 /* ViewExtensions.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		FA0220F08A14BA4B49894FA1 /* DaytwoTests */ = {
+			isa = PBXGroup;
+			children = (
+				E6B8D6E7E146E14AAC5194F3 /* MarkdownFormatterTests.swift */,
+				422119B8F79D255C2F435D14 /* StatsCalculatorTests.swift */,
+			);
+			path = DaytwoTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		61FC891A3CAA3E384B713AE4 /* DaytwoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A22A3503B90925BE40177312 /* Build configuration list for PBXNativeTarget "DaytwoTests" */;
+			buildPhases = (
+				A7998B42AA6BAA26759F1D8A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C618043FC6B3413933A3CA68 /* PBXTargetDependency */,
+			);
+			name = DaytwoTests;
+			packageProductDependencies = (
+			);
+			productName = DaytwoTests;
+			productReference = F6B00FCCFD7B2B970EE905FF /* DaytwoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		ADC6947251164BB47F5A04E4 /* Daytwo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D8610C6A4AB7A9E9654FADC /* Build configuration list for PBXNativeTarget "Daytwo" */;
+			buildPhases = (
+				58E4F5AB30FD918A6485F43D /* Sources */,
+				EE91EECCDB8631F9E64E900B /* Resources */,
+				28FCC45A77E60059B96213E4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Daytwo;
+			packageProductDependencies = (
+				8E8B85F8D8A8F8D39D599EEF /* MarkdownUI */,
+			);
+			productName = Daytwo;
+			productReference = 03BD08B815EF1BEF48896236 /* Daytwo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		40E58CC3BB57CDEE4AC21DAB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					61FC891A3CAA3E384B713AE4 = {
+						ProvisioningStyle = Automatic;
+					};
+					ADC6947251164BB47F5A04E4 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 85118D86E92EA0CCAA1CB682 /* Build configuration list for PBXProject "Daytwo" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 18F048E556405DF968E865AD;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B1680016CA1DDD9DD218C2CD /* XCRemoteSwiftPackageReference "MarkdownUI" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = ABEEA4A34CB1558CF45F511A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ADC6947251164BB47F5A04E4 /* Daytwo */,
+				61FC891A3CAA3E384B713AE4 /* DaytwoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE91EECCDB8631F9E64E900B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9800BA1CAF617151AC7E5FA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		58E4F5AB30FD918A6485F43D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				642340271D1B63D837256B50 /* ComposerView.swift in Sources */,
+				39DC486CB70EA52C74B52464 /* ContentView.swift in Sources */,
+				4C7A1A4639BC8C31201D3BF0 /* DateFormatters.swift in Sources */,
+				884749A41EB5176BB10E740F /* DaytwoApp.swift in Sources */,
+				08A548167D82B233773644CB /* EntriesMapView.swift in Sources */,
+				AFC22760B6D531EBD2D0DF67 /* EntryBackup.swift in Sources */,
+				60FFFEB1C70F4D15A3D887F0 /* EntryDetailView.swift in Sources */,
+				C65CFC9D2A77A744B2E514C9 /* JournalEntry.swift in Sources */,
+				FF9A57377E0E51D18ABB56DA /* LocationListView.swift in Sources */,
+				6455EF7AF00712B648D61B5F /* LocationService.swift in Sources */,
+				314BDD4C928D4510E91C9010 /* MarkdownEditorView.swift in Sources */,
+				D53135B1A180298E86B74844 /* MarkdownFormatter.swift in Sources */,
+				A0265052ECAB547E201A753A /* SampleData.swift in Sources */,
+				1FA0B6BEE4B9970419D1B26F /* SettingsView.swift in Sources */,
+				541B8D4621D384F4F93E1F0B /* StatsCalculator.swift in Sources */,
+				FF9240376C28170A0DE24A9C /* TimelineView.swift in Sources */,
+				751CB0288E0AC8E379AB4ABB /* ViewExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7998B42AA6BAA26759F1D8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67C75BD6AB1237058449721D /* MarkdownFormatterTests.swift in Sources */,
+				07EF14CEC38E7F78BA8E4F22 /* StatsCalculatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C618043FC6B3413933A3CA68 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADC6947251164BB47F5A04E4 /* Daytwo */;
+			targetProxy = DFA52649E064AA24B8455D87 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		381692B4574B4BBAD42D4D86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Daytwo/Daytwo.entitlements;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Daytwo/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lcollection.Daytwo;
+				PRODUCT_NAME = Daytwo;
+			};
+			name = Release;
+		};
+		3899AA826880703EBBA2AF61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lcollection.DaytwoTests;
+				PRODUCT_NAME = DaytwoTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Daytwo.app/Contents/MacOS/Daytwo";
+			};
+			name = Release;
+		};
+		3CE8CB99FE2E94E0562C0998 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_TESTABILITY = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.10;
+			};
+			name = Debug;
+		};
+		595C6112A1B02A607CDCB500 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Daytwo/Daytwo.entitlements;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Daytwo/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lcollection.Daytwo;
+				PRODUCT_NAME = Daytwo;
+			};
+			name = Debug;
+		};
+		ABF9A9DB100F9AC6DBEA4098 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.10;
+			};
+			name = Release;
+		};
+		D5B92D9BAD465D722B54DD16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lcollection.DaytwoTests;
+				PRODUCT_NAME = DaytwoTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Daytwo.app/Contents/MacOS/Daytwo";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7D8610C6A4AB7A9E9654FADC /* Build configuration list for PBXNativeTarget "Daytwo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				595C6112A1B02A607CDCB500 /* Debug */,
+				381692B4574B4BBAD42D4D86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		85118D86E92EA0CCAA1CB682 /* Build configuration list for PBXProject "Daytwo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CE8CB99FE2E94E0562C0998 /* Debug */,
+				ABF9A9DB100F9AC6DBEA4098 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A22A3503B90925BE40177312 /* Build configuration list for PBXNativeTarget "DaytwoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5B92D9BAD465D722B54DD16 /* Debug */,
+				3899AA826880703EBBA2AF61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B1680016CA1DDD9DD218C2CD /* XCRemoteSwiftPackageReference "MarkdownUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/MarkdownUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8E8B85F8D8A8F8D39D599EEF /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B1680016CA1DDD9DD218C2CD /* XCRemoteSwiftPackageReference "MarkdownUI" */;
+			productName = MarkdownUI;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 40E58CC3BB57CDEE4AC21DAB /* Project object */;
+}

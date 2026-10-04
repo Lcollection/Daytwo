@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+
+# Xcode
+DerivedData/
+build/
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# CocoaPods（未使用，保险起见）
+Pods/
+
+# App 导出产物
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# 临时导出
+export/
