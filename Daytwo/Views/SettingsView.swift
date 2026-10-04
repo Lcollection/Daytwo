@@ -2,7 +2,8 @@ import SwiftUI
 import SwiftData
 import UniformTypeIdentifiers
 
-/// 设置：数据导出 / 导入 / 清空，隐私说明，关于
+/// 设置：数据导出 / 导入 / 清空，隐私说明，关于。
+/// 采用卡片式分组布局，固定窗口宽度。
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
@@ -24,60 +25,26 @@ struct SettingsView: View {
 
     var body: some View {
         NavigationStack {
-            Form {
-                Section {
-                    Button {
-                        showFolderExport = true
-                    } label: {
-                        Label("导出为 Markdown 文件", systemImage: "doc.text")
-                    }
-                    Button {
-                        showJSONExport = true
-                    } label: {
-                        Label("导出 JSON 备份", systemImage: "square.and.arrow.up")
-                    }
-                    Button {
-                        showJSONImport = true
-                    } label: {
-                        Label("导入 JSON 备份", systemImage: "square.and.arrow.down")
-                    }
-                    Button(role: .destructive) {
-                        showWipeConfirm = true
-                    } label: {
-                        Label("清空所有日记", systemImage: "trash")
-                    }
-                    .disabled(entries.isEmpty)
-                } header: {
-                    Text("数据")
-                } footer: {
-                    Text("Markdown 导出包含日记正文与位置等元信息（front matter），可直接导入其他 Markdown 工具。")
-                }
+            ScrollView {
+                VStack(spacing: 24) {
+                    header
 
-                Section {
-                    Label("所有日记仅保存在本机，不上传云端", systemImage: "lock.shield")
-                    Text("地图底图与地点名称解析需要联网，但日记内容与位置数据永远不会离开你的设备。应用也没有任何账号体系。")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                } header: {
-                    Text("隐私")
+                    dataSection
+                    dangerSection
+                    privacySection
+                    aboutSection
                 }
-
-                Section {
-                    LabeledContent("版本", value: versionString)
-                    Link(destination: URL(string: "https://github.com/Lcollection/Daytwo")!) {
-                        Label("GitHub 仓库", systemImage: "link")
-                    }
-                    LabeledContent("开源协议", value: "MIT")
-                } header: {
-                    Text("关于")
-                }
+                .padding(24)
             }
+            .scrollBounceBehavior(.basedOnSize)
             .navigationTitle("设置")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("完成") { dismiss() }
+                        .keyboardShortcut(.defaultAction)
                 }
             }
+            .frame(width: 560, height: 660)
             .fileImporter(
                 isPresented: $showFolderExport,
                 allowedContentTypes: [.folder]
@@ -112,6 +79,199 @@ struct SettingsView: View {
                 Text(notice ?? "")
             }
         }
+    }
+
+    // MARK: - 区块
+
+    /// 应用标识头
+    private var header: some View {
+        VStack(spacing: 8) {
+            Image(nsImage: NSApp.applicationIconImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 72, height: 72)
+                .shadow(color: .black.opacity(0.18), radius: 8, y: 3)
+            Text("Daytwo")
+                .font(.title3.weight(.bold))
+            Text("本地优先的 Markdown 日记")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            Text("版本 \(versionString)")
+                .font(.caption2.monospacedDigit())
+                .foregroundStyle(.tertiary)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.top, 4)
+    }
+
+    /// 数据管理
+    private var dataSection: some View {
+        card("数据管理") {
+            actionRow(
+                icon: "doc.text", color: .accentColor,
+                title: "导出为 Markdown 文件",
+                subtitle: "每篇日记一个 .md 文件，含创建时间与位置元信息"
+            ) { showFolderExport = true }
+
+            rowDivider
+
+            actionRow(
+                icon: "square.and.arrow.up", color: .teal,
+                title: "导出 JSON 备份",
+                subtitle: "包含全部日记与位置的完整备份文件"
+            ) { showJSONExport = true }
+
+            rowDivider
+
+            actionRow(
+                icon: "square.and.arrow.down", color: .indigo,
+                title: "导入 JSON 备份",
+                subtitle: "按日记 ID 合并：已存在则更新，不存在则新增"
+            ) { showJSONImport = true }
+        }
+    }
+
+    /// 危险操作
+    private var dangerSection: some View {
+        card("危险操作") {
+            actionRow(
+                icon: "trash", color: .red,
+                title: "清空所有日记",
+                subtitle: entries.isEmpty
+                    ? "当前没有日记"
+                    : "将永久删除本机全部 \(entries.count) 篇日记，不可恢复",
+                destructive: true
+            ) { showWipeConfirm = true }
+            .disabled(entries.isEmpty)
+        }
+    }
+
+    /// 隐私说明
+    private var privacySection: some View {
+        card("隐私") {
+            HStack(alignment: .top, spacing: 12) {
+                Image(systemName: "lock.shield.fill")
+                    .font(.system(size: 14))
+                    .foregroundStyle(.green)
+                    .frame(width: 28, height: 28)
+                    .background(Color.green.opacity(0.14), in: RoundedRectangle(cornerRadius: 7))
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("日记只属于你")
+                        .font(.body.weight(.medium))
+                    Text("所有日记与位置数据仅保存在本机，没有任何云端同步和账号体系。地图底图与地点名称解析需要联网，但日记内容永远不会离开你的设备。")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .lineSpacing(2)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer(minLength: 0)
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 12)
+        }
+    }
+
+    /// 关于
+    private var aboutSection: some View {
+        card("关于") {
+            infoRow(label: "开源协议", value: "MIT License")
+            rowDivider
+            infoRow(label: "项目主页", value: "github.com/Lcollection/Daytwo") {
+                if let url = URL(string: "https://github.com/Lcollection/Daytwo") {
+                    NSWorkspace.shared.open(url)
+                }
+            }
+        }
+    }
+
+    // MARK: - 组件
+
+    /// 卡片容器：外部小标题 + 圆角分组背景
+    @ViewBuilder
+    private func card<Content: View>(_ title: String, @ViewBuilder content: () -> Content) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(title)
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.secondary)
+                .padding(.leading, 6)
+            VStack(spacing: 0) {
+                content()
+            }
+            .background(Color.secondary.opacity(0.08), in: RoundedRectangle(cornerRadius: 12))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+        }
+    }
+
+    private var rowDivider: some View {
+        Divider()
+            .padding(.leading, 54)
+    }
+
+    /// 可点击的操作行：图标 + 标题/说明 + 箭头
+    private func actionRow(
+        icon: String,
+        color: Color,
+        title: String,
+        subtitle: String,
+        destructive: Bool = false,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
+            HStack(spacing: 12) {
+                Image(systemName: icon)
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(destructive ? Color.white : color)
+                    .frame(width: 28, height: 28)
+                    .background(
+                        destructive ? AnyShapeStyle(Color.red) : AnyShapeStyle(color.opacity(0.15)),
+                        in: RoundedRectangle(cornerRadius: 7)
+                    )
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(title)
+                        .font(.body.weight(.medium))
+                        .foregroundStyle(destructive ? Color.red : Color.primary)
+                    Text(subtitle)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer(minLength: 0)
+                Image(systemName: "chevron.right")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.tertiary)
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+    }
+
+    /// 静态信息行：标签 + 值（value 可点击时传 action）
+    private func infoRow(label: String, value: String, action: (() -> Void)? = nil) -> some View {
+        Button(action: { action?() }) {
+            HStack {
+                Text(label)
+                    .foregroundStyle(.secondary)
+                Spacer()
+                HStack(spacing: 4) {
+                    Text(value)
+                        .foregroundStyle(action == nil ? Color.primary : Color.accentColor)
+                    if action != nil {
+                        Image(systemName: "arrow.up.right")
+                            .font(.caption2.weight(.semibold))
+                            .foregroundStyle(.tertiary)
+                    }
+                }
+                .font(.callout)
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .disabled(action == nil)
     }
 
     // MARK: - 导出 Markdown 文件夹
